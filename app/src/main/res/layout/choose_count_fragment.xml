@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="jblejder.cards.chooseCount.viewModels.ChooseCountViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/select_deck_count"
+                android:textSize="@dimen/text_size_medium"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_big"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/lessButton"
+                    android:layout_width="@dimen/image_size_big"
+                    android:layout_height="@dimen/image_size_big"
+                    android:layout_gravity="center_vertical"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_chevron_left"
+                    android:visibility="@{model.leftArrowVisible}"/>
+
+                <android.support.v4.widget.Space
+                    android:layout_width="@dimen/margin_big"
+                    android:layout_height="@dimen/margin_big"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@{String.valueOf(model.deckCount)}"
+                    android:textSize="@dimen/text_size_big"
+                    tools:text="1"/>
+
+                <android.support.v4.widget.Space
+                    android:layout_width="@dimen/margin_big"
+                    android:layout_height="@dimen/margin_big"/>
+
+                <ImageView
+                    android:id="@+id/moreButton"
+                    android:layout_width="@dimen/image_size_big"
+                    android:layout_height="@dimen/image_size_big"
+                    android:layout_gravity="center_vertical"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_chevron_right"
+                    android:visibility="@{model.rightArrowVisible}"/>
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/margin_big"/>
+
+            <TextView
+                android:id="@+id/startButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/margin_medium"
+                android:text="@string/start"
+                android:textSize="@dimen/text_size_medium"/>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
