@@ -5,9 +5,13 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.test.mock.MockApplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import jblejder.cards.GlobalApplication;
+import jblejder.cards.shared.dagger.GlobalComponent;
 
 public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
 
@@ -21,5 +25,9 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         int layoutId = getLayoutId();
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false);
         return binding.getRoot();
+    }
+
+    public GlobalComponent getGlobalComponent() {
+        return ((GlobalApplication) getActivity().getApplication()).getComponent();
     }
 }

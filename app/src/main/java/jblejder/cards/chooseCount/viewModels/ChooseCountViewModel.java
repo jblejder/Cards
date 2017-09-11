@@ -3,6 +3,8 @@ package jblejder.cards.chooseCount.viewModels;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
 
+import javax.inject.Inject;
+
 import jblejder.cards.shared.configurations.Constants;
 
 import static jblejder.cards.shared.configurations.Constants.*;
@@ -19,6 +21,7 @@ public class ChooseCountViewModel {
         rightArrowVisible = new ObservableBoolean();
     }
 
+    @Inject
     public ChooseCountViewModel() {
         updateArrows();
     }
