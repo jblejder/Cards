@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_big"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cardRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_height"
+            android:clipToPadding="false"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_big"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cardPatternsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            tools:layout_height="20dp"/>
+
+        <android.support.v4.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_big"/>
+
+        <TextView
+            android:id="@+id/drawButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/margin_medium"
+            android:text="@string/draw_card"
+            android:textSize="@dimen/text_size_medium"/>
+    </LinearLayout>
+</layout>

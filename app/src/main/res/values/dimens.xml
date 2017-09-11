@@ -8,4 +8,7 @@
     <dimen name="margin_big">48dp</dimen>
     <dimen name="margin_medium">12dp</dimen>
 
+    <string name="card_size_ratio" translatable="false">0.72</string>
+    <dimen name="card_width">158dp</dimen>
+    <dimen name="card_height">220dp</dimen>
 </resources>
