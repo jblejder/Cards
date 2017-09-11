@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 public class BaseResponse {
     @SerializedName("success")
     public boolean success;
-    @SerializedName("deckId")
+    @SerializedName("deck_id")
     public String  deckId;
     @SerializedName("remaining")
     public int     remaining;

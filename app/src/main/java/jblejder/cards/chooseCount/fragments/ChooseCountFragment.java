@@ -8,10 +8,13 @@ import android.view.View;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import jblejder.cards.R;
 import jblejder.cards.chooseCount.ChooseCountFragmentDelegate;
 import jblejder.cards.chooseCount.viewModels.ChooseCountViewModel;
 import jblejder.cards.databinding.ChooseCountFragmentBinding;
+import jblejder.cards.shared.api.NewSetResponse;
 import jblejder.cards.shared.framework.fragments.BaseFragment;
 
 public class ChooseCountFragment extends BaseFragment<ChooseCountFragmentBinding> {
@@ -47,6 +50,14 @@ public class ChooseCountFragment extends BaseFragment<ChooseCountFragmentBinding
     private void observe() {
         binding.lessButton.setOnClickListener(v -> viewModel.decrement());
         binding.moreButton.setOnClickListener(v -> viewModel.increment());
-        binding.startButton.setOnClickListener(v -> delegate.deckCountSelected(viewModel.deckCount.get()));
+        binding.startButton.setOnClickListener(v -> selectDeckCount());
+    }
+
+    private void selectDeckCount() {
+        Disposable disposable = viewModel.selectSetSize()
+                .subscribe(newSetResponse -> {
+                    delegate.newCardSetCreated(newSetResponse.deckId);
+                });
+        disposeBag.add(disposable);
     }
 }

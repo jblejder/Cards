@@ -43,8 +43,8 @@ public class ChooseCountViewModel {
         }
         loading.set(true);
         return service
-                .getNewCardSet(deckCount.get())
-                .doOnEvent((newSetResponse, throwable) -> {
+                .getNewCardSet(deckCount.get()).doFinally()
+                .doFinally(() -> {
                     loading.set(false);
                 });
     }

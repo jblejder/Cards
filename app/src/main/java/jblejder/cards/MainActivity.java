@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import jblejder.cards.cardList.fragments.CardListFragment;
+import jblejder.cards.cardList.models.CardListFragmentInitModel;
 import jblejder.cards.chooseCount.ChooseCountFragmentDelegate;
 import jblejder.cards.chooseCount.fragments.ChooseCountFragment;
 import jblejder.cards.databinding.MainActivityBinding;
@@ -27,10 +28,12 @@ public class MainActivity extends AppCompatActivity implements ChooseCountFragme
     }
 
     @Override
-    public void deckCountSelected(int count) {
+    public void newCardSetCreated(String id) {
+        CardListFragmentInitModel arg = new CardListFragmentInitModel(id);
+
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(binding.container.getId(), CardListFragment.newInstance());
+        ft.replace(binding.container.getId(), CardListFragment.newInstance(arg));
         ft.addToBackStack(null);
         ft.commit();
     }
