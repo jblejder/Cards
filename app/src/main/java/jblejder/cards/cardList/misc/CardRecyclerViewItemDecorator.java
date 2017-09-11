@@ -1,4 +1,4 @@
-package jblejder.cards.cardList;
+package jblejder.cards.cardList.misc;
 
 import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;

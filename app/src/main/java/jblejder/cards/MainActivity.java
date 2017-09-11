@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import jblejder.cards.cardList.CardListFragment;
+import jblejder.cards.cardList.fragments.CardListFragment;
 import jblejder.cards.chooseCount.ChooseCountFragmentDelegate;
 import jblejder.cards.chooseCount.fragments.ChooseCountFragment;
 import jblejder.cards.databinding.MainActivityBinding;
