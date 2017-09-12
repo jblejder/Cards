@@ -13,8 +13,9 @@ public interface ApiEndpoints {
             @Query("deck_count") int deckCount
     );
 
-    @GET("deck/{deckId}/draw/?count=1")
+    @GET("deck/{deckId}/draw")
     Single<DrawCardResponse> drawCard(
-            @Path("deckId") String deckId
+            @Path("deckId") String deckId,
+            @Query("count") int count
     );
 }

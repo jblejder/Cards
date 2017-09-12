@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <data>
+
+        <variable
+            name="model"
+            type="jblejder.cards.cardList.viewModels.CardItemViewModel"/>
+
+    </data>
+
     <android.support.v7.widget.CardView
         android:layout_width="@dimen/card_width"
         android:layout_height="@dimen/card_height"
@@ -10,6 +18,6 @@
             android:id="@+id/image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ff0000"/>
+            android:src="@{model.image}"/>
     </android.support.v7.widget.CardView>
 </layout>

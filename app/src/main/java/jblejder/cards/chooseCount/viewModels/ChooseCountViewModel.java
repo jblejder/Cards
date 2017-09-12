@@ -6,9 +6,7 @@ import android.databinding.ObservableField;
 import javax.inject.Inject;
 
 import io.reactivex.Single;
-import io.reactivex.functions.BiConsumer;
-import jblejder.cards.shared.Constants;
-import jblejder.cards.shared.Services.DeckService;
+import jblejder.cards.shared.services.DeckService;
 import jblejder.cards.shared.api.NewSetResponse;
 
 import static jblejder.cards.shared.Constants.*;
@@ -43,7 +41,7 @@ public class ChooseCountViewModel {
         }
         loading.set(true);
         return service
-                .getNewCardSet(deckCount.get()).doFinally()
+                .getNewCardSet(deckCount.get())
                 .doFinally(() -> {
                     loading.set(false);
                 });
@@ -54,7 +52,7 @@ public class ChooseCountViewModel {
             return;
         }
 
-        if (deckCount.get() < Constants.MAX_DECKS) {
+        if (deckCount.get() < MAX_DECKS) {
             deckCount.set(deckCount.get() + 1);
             updateArrows();
         }

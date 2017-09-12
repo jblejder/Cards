@@ -1,11 +1,10 @@
-package jblejder.cards.shared.Services;
+package jblejder.cards.shared.services;
 
 
 import javax.inject.Inject;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.internal.schedulers.IoScheduler;
 import io.reactivex.schedulers.Schedulers;
 import jblejder.cards.shared.api.ApiEndpoints;
 import jblejder.cards.shared.api.DrawCardResponse;
@@ -26,8 +25,8 @@ public class DeckService {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Single<DrawCardResponse> drawCard(String deckId) {
-        return endpoints.drawCard(deckId)
+    public Single<DrawCardResponse> drawCard(String deckId, int cards) {
+        return endpoints.drawCard(deckId, cards)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

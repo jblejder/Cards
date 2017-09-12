@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import jblejder.cards.databinding.CardViewBinding;
+import jblejder.cards.shared.models.Card;
 
 public class CardViewHolder extends RecyclerView.ViewHolder {
 
@@ -12,5 +13,9 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     public CardViewHolder(CardViewBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
+    }
+
+    public void setCard(Card card) {
+
     }
 }

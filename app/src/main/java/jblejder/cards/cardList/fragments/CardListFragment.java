@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.Disposable;
 import jblejder.cards.R;
 import jblejder.cards.cardList.misc.CardRecyclerViewItemDecorator;
 import jblejder.cards.cardList.adapters.CardsAdapter;
@@ -51,9 +52,11 @@ public class CardListFragment extends BaseFragment<CardListFragmentBinding> {
         String json = getArguments().getString(DATA_KEY);
         CardListFragmentInitModel model = new Gson().fromJson(json, CardListFragmentInitModel.class);
         viewModel.setSetId(model.setId);
+        Disposable disposable = viewModel.loadInitialCards().subscribe();
+        disposeBag.add(disposable);
 
 
-        CardsAdapter cardsAdapter = new CardsAdapter();
+        CardsAdapter cardsAdapter = new CardsAdapter(viewModel.cards);
         binding.cardRecyclerView.addItemDecoration(new CardRecyclerViewItemDecorator());
         binding.cardRecyclerView.setAdapter(cardsAdapter);
         binding.cardRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
