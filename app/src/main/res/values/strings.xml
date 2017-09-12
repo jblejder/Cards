@@ -3,4 +3,8 @@
     <string name="select_deck_count">Select deck count</string>
     <string name="start">Give it a try</string>
     <string name="draw_card">Draw Card</string>
+    <string name="color_hand">Color</string>
+    <string name="stairs_hand">Stairs</string>
+    <string name="twins_hand">Twins</string>
+    <string name="figure_hand">Figure</string>
 </resources>
