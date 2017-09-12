@@ -8,4 +8,5 @@
     <string name="twins_hand">Twins</string>
     <string name="figure_hand">Figure</string>
     <string name="found_patterns">Found Patterns</string>
+    <string name="shuffling_cards">shuffling cards</string>
 </resources>
