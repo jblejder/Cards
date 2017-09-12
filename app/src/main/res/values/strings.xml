@@ -11,4 +11,5 @@
     <string name="shuffling_cards">shuffling cards</string>
     <string name="no_patterns_found">No patterns found</string>
     <string name="remaining_cards">Remaining cards:</string>
+    <string name="shuffle_cards">Shuffle cards!</string>
 </resources>

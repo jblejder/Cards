@@ -58,6 +58,7 @@ public class CardListFragment extends BaseFragment<CardListFragmentBinding> {
 
         binding.setModel(viewModel);
         binding.drawButton.setOnClickListener(v -> disposeBag.add(viewModel.drawCard().subscribe()));
+        binding.shuffleButton.setOnClickListener(v -> getFragmentManager().popBackStack());
 
         CardsAdapter cardsAdapter = new CardsAdapter(viewModel.cards);
         binding.cardRecyclerView.addItemDecoration(new CardRecyclerViewItemDecorator());

@@ -86,7 +86,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:exist="@{model.hasMoreCards}">
 
             <TextView
                 android:id="@+id/drawButton"
@@ -104,5 +105,16 @@
                 android:layout_gravity="center_horizontal"
                 app:exist="@{model.drawingCard}"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/shuffleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="?attr/selectableItemBackground"
+            android:padding="@dimen/margin_medium"
+            android:text="@string/shuffle_cards"
+            android:textSize="@dimen/text_size_medium"
+            app:exist="@{!model.hasMoreCards}"/>
     </LinearLayout>
 </layout>
