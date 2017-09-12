@@ -29,15 +29,18 @@ public class StairsRecognitor implements HandRecognitor {
 
         ArrayList<Card> copyCards = new ArrayList<>(cards);
 
-        List<Card> sorted = Stream.of(copyCards)
-                .sorted(this::compare).collect(Collectors.toList());
+        List<CardValue> sorted = Stream.of(copyCards)
+                .map(Card::getValue)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
 
-        CardValue prevCard = sorted.get(0).getValue();
+        CardValue prevCard = sorted.get(0);
         int risingElements = 1;
         int decreasingElements = 1;
 
         for (int i = 1; i < sorted.size(); i++) {
-            CardValue cardValue = sorted.get(i).getValue();
+            CardValue cardValue = sorted.get(i);
             int step = cardValue.ordinal() - prevCard.ordinal();
             if (step == 1) {
                 risingElements += 1;
@@ -59,9 +62,9 @@ public class StairsRecognitor implements HandRecognitor {
         return RecognitionResult.notFound();
     }
 
-    private int compare(Card c1, Card c2) {
-        int c1value = c1.getValue().ordinal();
-        int c2value = c2.getValue().ordinal();
+    private int compare(CardValue c1, CardValue c2) {
+        int c1value = c1.ordinal();
+        int c2value = c2.ordinal();
         return Integer.compare(c1value, c2value);
     }
 
