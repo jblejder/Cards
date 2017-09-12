@@ -56,6 +56,7 @@ public class CardListFragment extends BaseFragment<CardListFragmentBinding> {
         Disposable disposable = viewModel.loadInitialCards().subscribe();
         disposeBag.add(disposable);
 
+        binding.setModel(viewModel);
         binding.drawButton.setOnClickListener(v -> disposeBag.add(viewModel.drawCard().subscribe()));
 
         CardsAdapter cardsAdapter = new CardsAdapter(viewModel.cards);

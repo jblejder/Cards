@@ -16,6 +16,8 @@ import jblejder.cards.shared.services.RecognitionService;
 
 public class CardListViewModel {
 
+    public ObservableBoolean drawingCard;
+
     public ObservableBoolean    hasMoreCards;
     public ObservableList<Card> cards;
     public ObservableList<Hand> hands;
@@ -29,6 +31,7 @@ public class CardListViewModel {
         cards = new ObservableArrayList<>();
         hands = new ObservableArrayList<>();
         hasMoreCards = new ObservableBoolean(true);
+        drawingCard = new ObservableBoolean();
     }
 
     @Inject
@@ -51,11 +54,13 @@ public class CardListViewModel {
 
     private Single<DrawCardResponse> drawCards(int count) {
         return service.drawCard(setId, count)
+                .doOnSubscribe(disposable -> drawingCard.set(true))
                 .doOnSuccess(drawCardResponse -> {
                     cards.addAll(drawCardResponse.cards);
                 }).flatMap(drawCardResponse -> recognitionService.recognise(cards).doOnSuccess(result -> {
                     hands.clear();
                     hands.addAll(result);
-                }).map(v -> drawCardResponse));
+                }).map(v -> drawCardResponse))
+                .doFinally(() -> drawingCard.set(false));
     }
 }

@@ -9,8 +9,8 @@
     <dimen name="margin_medium">12dp</dimen>
 
     <string name="card_size_ratio" translatable="false">0.72</string>
-    <dimen name="card_width">79dp</dimen>
-    <dimen name="card_height">110dp</dimen>
+    <dimen name="card_width">72dp</dimen>
+    <dimen name="card_height">100dp</dimen>
 
-    <dimen name="card_height_double">220dp</dimen>
+    <dimen name="card_height_double">200dp</dimen>
 </resources>
