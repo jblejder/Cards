@@ -16,6 +16,6 @@ public class CardViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setCard(Card card) {
-
+        binding.setModel(card);
     }
 }

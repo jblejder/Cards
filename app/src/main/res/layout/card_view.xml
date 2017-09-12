@@ -5,7 +5,7 @@
 
         <variable
             name="model"
-            type="jblejder.cards.cardList.viewModels.CardItemViewModel"/>
+            type="jblejder.cards.shared.models.Card"/>
 
     </data>
 

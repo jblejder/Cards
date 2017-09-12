@@ -8,27 +8,33 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 import jblejder.cards.shared.Constants;
-import jblejder.cards.shared.services.DeckService;
 import jblejder.cards.shared.api.DrawCardResponse;
+import jblejder.cards.shared.cardHandRecognition.Hand;
 import jblejder.cards.shared.models.Card;
+import jblejder.cards.shared.services.DeckService;
+import jblejder.cards.shared.services.RecognitionService;
 
 public class CardListViewModel {
 
     public ObservableBoolean    hasMoreCards;
     public ObservableList<Card> cards;
+    public ObservableList<Hand> hands;
 
-    private final DeckService service;
+    private final DeckService        service;
+    private final RecognitionService recognitionService;
 
     private String setId;
 
     {
         cards = new ObservableArrayList<>();
+        hands = new ObservableArrayList<>();
         hasMoreCards = new ObservableBoolean(true);
     }
 
     @Inject
-    public CardListViewModel(DeckService service) {
+    public CardListViewModel(DeckService service, RecognitionService recognitionService) {
         this.service = service;
+        this.recognitionService = recognitionService;
     }
 
     public Single<DrawCardResponse> drawCard() {
@@ -47,6 +53,9 @@ public class CardListViewModel {
         return service.drawCard(setId, count)
                 .doOnSuccess(drawCardResponse -> {
                     cards.addAll(drawCardResponse.cards);
-                });
+                }).flatMap(drawCardResponse -> recognitionService.recognise(cards).doOnSuccess(result -> {
+                    hands.clear();
+                    hands.addAll(result);
+                }).map(v -> drawCardResponse));
     }
 }

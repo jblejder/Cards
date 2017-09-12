@@ -3,7 +3,7 @@ package jblejder.cards.shared.models;
 import com.google.gson.annotations.SerializedName;
 
 public enum CardValue {
-    @SerializedName("A")
+    @SerializedName("ACE")
     Ace,
     @SerializedName("2")
     V2,

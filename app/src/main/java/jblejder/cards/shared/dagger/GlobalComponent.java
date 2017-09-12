@@ -7,7 +7,8 @@ import jblejder.cards.chooseCount.fragments.ChooseCountFragment;
 @Component(modules = {
         AppModule.class,
         RetrofitModule.class,
-        ApiModule.class
+        ApiModule.class,
+        RecognitionModule.class
 })
 public interface GlobalComponent {
 

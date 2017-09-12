@@ -3,6 +3,7 @@ package jblejder.cards.shared.models;
 public class Card {
     private CardSuit  suit;
     private CardValue value;
+    private String    image;
     private String    code;
 
     public Card(CardSuit suit, CardValue value) {
@@ -20,5 +21,9 @@ public class Card {
 
     public CardValue getValue() {
         return value;
+    }
+
+    public String getImage() {
+        return image;
     }
 }
