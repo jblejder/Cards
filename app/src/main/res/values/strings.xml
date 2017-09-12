@@ -10,4 +10,5 @@
     <string name="found_patterns">Found Patterns</string>
     <string name="shuffling_cards">shuffling cards</string>
     <string name="no_patterns_found">No patterns found</string>
+    <string name="remaining_cards">Remaining cards:</string>
 </resources>

@@ -2,6 +2,7 @@ package jblejder.cards.cardList.viewModels;
 
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 import android.databinding.ObservableList;
 
 import javax.inject.Inject;
@@ -18,9 +19,10 @@ public class CardListViewModel {
 
     public ObservableBoolean drawingCard;
 
-    public ObservableBoolean    hasMoreCards;
-    public ObservableList<Card> cards;
-    public ObservableList<Hand> hands;
+    public ObservableBoolean        hasMoreCards;
+    public ObservableList<Card>     cards;
+    public ObservableList<Hand>     hands;
+    public ObservableField<Integer> remainingCards;
 
     private final DeckService        service;
     private final RecognitionService recognitionService;
@@ -32,6 +34,7 @@ public class CardListViewModel {
         hands = new ObservableArrayList<>();
         hasMoreCards = new ObservableBoolean(true);
         drawingCard = new ObservableBoolean();
+        remainingCards = new ObservableField<>(0);
     }
 
     @Inject
@@ -57,6 +60,10 @@ public class CardListViewModel {
                 .doOnSubscribe(disposable -> drawingCard.set(true))
                 .doOnSuccess(drawCardResponse -> {
                     cards.addAll(drawCardResponse.cards);
+                    remainingCards.set(drawCardResponse.remaining);
+                    if (drawCardResponse.remaining == 0) {
+                        hasMoreCards.set(false);
+                    }
                 }).flatMap(drawCardResponse -> recognitionService.recognise(cards).doOnSuccess(result -> {
                     hands.clear();
                     hands.addAll(result);
